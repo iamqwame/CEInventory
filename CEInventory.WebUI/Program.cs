@@ -1,10 +1,16 @@
 using CEInventory.WebUI.Components;
+using CEInventory.WebUI.Components.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<ProductContext>(options =>
+    options.UseInMemoryDatabase("ProductDb"));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
