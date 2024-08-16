@@ -10,6 +10,11 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<ProductContext>(options =>
     options.UseInMemoryDatabase("ProductDb"));
+
+
+
+
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
@@ -22,6 +27,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -31,3 +38,5 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+
